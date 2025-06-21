@@ -15,46 +15,31 @@ Text Domain:       freeflexoverlay
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Autoinstallation of CMB2 on activation and admin_init
+ * Check if CMB2 is available and, if not, display an admin notice.
+ *
+ * Prior versions tried to fetch CMB2 from GitHub automatically. In
+ * restricted environments that behaviour caused failures. The plugin
+ * now simply alerts administrators when CMB2 is missing so they can
+ * install it manually (either as a separate plugin or by placing the
+ * library inside <code>includes/cmb2/</code>).
  */
-register_activation_hook( __FILE__, 'ffo_maybe_install_cmb2' );
-add_action( 'admin_init', 'ffo_maybe_install_cmb2', 1 );
-function ffo_maybe_install_cmb2() {
+add_action( 'admin_notices', 'ffo_check_cmb2_notice' );
+function ffo_check_cmb2_notice() {
+    if ( defined( 'CMB2_LOADED' ) || class_exists( 'CMB2' ) ) {
+        return;
+    }
     $init = plugin_dir_path( __FILE__ ) . 'includes/cmb2/init.php';
     if ( file_exists( $init ) ) {
+        require_once $init;
         return;
     }
-    $response = wp_remote_get(
-        'https://api.github.com/repos/CMB2/CMB2/releases/latest',
-        [ 'headers' => [ 'User-Agent' => 'WordPress/' . get_bloginfo('version') ] ]
-    );
-    if ( is_wp_error( $response ) ) {
-        return;
-    }
-    $data = json_decode( wp_remote_retrieve_body( $response ), true );
-    if ( empty( $data['tag_name'] ) ) {
-        return;
-    }
-    $tag = sanitize_text_field( $data['tag_name'] );
-    $zip_url = "https://github.com/CMB2/CMB2/archive/refs/tags/{$tag}.zip";
-    require_once ABSPATH . 'wp-admin/includes/file.php';
-    require_once ABSPATH . 'wp-admin/includes/misc.php';
-    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-    $tmp = download_url( $zip_url );
-    if ( is_wp_error( $tmp ) ) {
-        return;
-    }
-    $dest = plugin_dir_path( __FILE__ ) . 'includes/';
-    $unz = unzip_file( $tmp, $dest );
-    @unlink( $tmp );
-    if ( is_wp_error( $unz ) ) {
-        return;
-    }
-    $source = $dest . "CMB2-{$tag}";
-    $target = $dest . 'cmb2';
-    if ( is_dir( $source ) ) {
-        rename( $source, $target );
-    }
+    echo '<div class="notice notice-warning"><p>' .
+        esc_html__(
+            'FreeFlexOverlay Builder requires the CMB2 library. ' .
+            'Please install the CMB2 plugin or place it in the plugin\'s includes/cmb2 directory.',
+            'freeflexoverlay'
+        ) .
+        '</p></div>';
 }
 
 /**
