@@ -3,7 +3,7 @@
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
 Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
-Version:           2.5.0
+Version:           2.5.1
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
 License:           MIT
@@ -14,7 +14,7 @@ Text Domain:       freeflexoverlay
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FFO_VERSION', '2.5.0' );
+define( 'FFO_VERSION', '2.5.1' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 
@@ -93,4 +93,65 @@ function ffo_admin_assets( $hook ) {
         wp_enqueue_script( 'freeflexoverlay-admin', FFO_URL . 'assets/admin.js', [ 'jquery' ], FFO_VERSION, true );
         wp_enqueue_style( 'freeflexoverlay-admin-style', FFO_URL . 'assets/admin.css', [], FFO_VERSION );
     }
+}
+
+/**
+ * Populate default modules when a predefined pattern is chosen and no modules
+ * are set yet.
+ */
+add_action( 'save_post', 'ffo_apply_pattern_defaults', 20 );
+function ffo_apply_pattern_defaults( $post_id ) {
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( wp_is_post_revision( $post_id ) ) {
+        return;
+    }
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    $post_type = get_post_type( $post_id );
+    if ( ! in_array( $post_type, array( 'post', 'page', 'ffo_layout' ), true ) ) {
+        return;
+    }
+
+    $prefix  = 'ffo_';
+    $pattern = get_post_meta( $post_id, $prefix . 'layout_pattern', true );
+    $modules = get_post_meta( $post_id, $prefix . 'modules_group', true );
+
+    if ( ! empty( $modules ) || ! $pattern || 'custom' === $pattern ) {
+        return;
+    }
+
+    $defaults = array();
+    if ( 'pattern1' === $pattern ) {
+        $defaults = array(
+            ffo_empty_module( 'fullwidth' ),
+            ffo_empty_module( 'grid' ),
+            ffo_empty_module( 'fullwidth' ),
+        );
+    } elseif ( 'fullwidth' === $pattern ) {
+        $defaults = array( ffo_empty_module( 'fullwidth' ) );
+    } elseif ( 'grid' === $pattern ) {
+        $defaults = array( ffo_empty_module( 'grid' ) );
+    }
+
+    if ( ! empty( $defaults ) ) {
+        update_post_meta( $post_id, $prefix . 'modules_group', $defaults );
+    }
+}
+
+/**
+ * Helper to create an empty module array for a given layout type.
+ */
+function ffo_empty_module( $type ) {
+    return array(
+        'layout_type'  => $type,
+        'full_content' => '',
+        'grid_item_1'  => '',
+        'grid_item_2'  => '',
+        'grid_item_3'  => '',
+        'grid_item_4'  => '',
+    );
 }
