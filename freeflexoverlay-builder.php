@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name:       FreeFlexOverlay Builder
+Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
-Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche ohne ACF Pro.
+Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
 Version:           2.1.0
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
