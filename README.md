@@ -21,8 +21,12 @@ install CMB2 manually or copy the library into `includes/cmb2/` so that
 1. Upload the plugin folder to your WordPress installation and activate it.
 2. The plugin attempts to fetch CMB2 on activation. If that fails, install CMB2
    manually (see **Requirements**).
-3. Create or edit a page/post and configure modules via the **Page Modules** meta box.
-4. Insert the shortcode `[free_flexio_modules]` into the content where the modules and search should appear.
+3. Version 2.2.1 improves stability when the shortcode runs outside the main
+   query by checking that a valid post is available.
+4. Create or edit a page/post and configure modules via the **Page Modules** meta
+   box.
+5. Insert the shortcode `[free_flexio_modules]` into the content where the
+   modules and search should appear.
 
 ## Customising the search
 
