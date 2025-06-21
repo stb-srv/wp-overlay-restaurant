@@ -3,7 +3,7 @@
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
 Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
-Version:           2.3.0
+Version:           2.4.0
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
 License:           MIT
@@ -14,7 +14,7 @@ Text Domain:       freeflexoverlay
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FFO_VERSION', '2.3.0' );
+define( 'FFO_VERSION', '2.4.0' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 
@@ -40,19 +40,19 @@ function ffo_cmb2_available() {
 
 add_action( 'plugins_loaded', 'ffo_init_plugin' );
 function ffo_init_plugin() {
-    if ( ! ffo_cmb2_available() ) {
-        return;
+    if ( ffo_cmb2_available() ) {
+        if ( ! ( class_exists( 'CMB2' ) || defined( 'CMB2_LOADED' ) ) && file_exists( FFO_DIR . 'includes/cmb2/init.php' ) ) {
+            require_once FFO_DIR . 'includes/cmb2/init.php';
+        }
+
+        delete_option( 'ffo_cmb2_missing' );
+
+        require_once FFO_DIR . 'includes/meta-boxes.php';
+    } else {
+        require_once FFO_DIR . 'includes/fallback-meta-boxes.php';
     }
 
-    if ( ! ( class_exists( 'CMB2' ) || defined( 'CMB2_LOADED' ) ) && file_exists( FFO_DIR . 'includes/cmb2/init.php' ) ) {
-        require_once FFO_DIR . 'includes/cmb2/init.php';
-    }
-
-    delete_option( 'ffo_cmb2_missing' );
-
-    require_once FFO_DIR . 'includes/meta-boxes.php';
     require_once FFO_DIR . 'includes/render-modules.php';
-
     add_shortcode( 'free_flexio_modules', 'ffo_render_modules_shortcode' );
 }
 
@@ -60,4 +60,12 @@ add_action( 'wp_enqueue_scripts', 'ffo_enqueue_assets' );
 function ffo_enqueue_assets() {
     wp_enqueue_style( 'freeflexoverlay-style', FFO_URL . 'assets/style.css', [], FFO_VERSION );
     wp_enqueue_script( 'freeflexoverlay-script', FFO_URL . 'assets/script.js', [ 'jquery' ], FFO_VERSION, true );
+}
+
+add_action( 'admin_enqueue_scripts', 'ffo_admin_assets' );
+function ffo_admin_assets( $hook ) {
+    if ( in_array( $hook, [ 'post.php', 'post-new.php' ], true ) ) {
+        wp_enqueue_script( 'freeflexoverlay-admin', FFO_URL . 'assets/admin.js', [ 'jquery' ], FFO_VERSION, true );
+        wp_enqueue_style( 'freeflexoverlay-admin-style', FFO_URL . 'assets/admin.css', [], FFO_VERSION );
+    }
 }
