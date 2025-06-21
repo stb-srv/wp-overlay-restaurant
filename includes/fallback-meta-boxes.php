@@ -4,7 +4,7 @@
  */
 add_action( 'add_meta_boxes', 'ffo_add_fallback_metabox' );
 function ffo_add_fallback_metabox() {
-    add_meta_box( 'ffo_modules', __( 'Page Modules', 'freeflexoverlay' ), 'ffo_render_fallback_metabox', [ 'post', 'page' ] );
+    add_meta_box( 'ffo_modules', __( 'Page Modules', 'freeflexoverlay' ), 'ffo_render_fallback_metabox', [ 'post', 'page', 'ffo_layout' ] );
 }
 
 function ffo_render_fallback_metabox( $post ) {
