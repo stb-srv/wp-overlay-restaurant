@@ -1,6 +1,6 @@
-# FreeFlexOverlay Builder
+# wp-overlay-restaurant
 
-FreeFlexOverlay Builder combines a small page builder with an overlay search. It ships a custom meta box powered by [CMB2](https://github.com/CMB2/CMB2) to create flexible fullwidth or grid modules on pages or posts. A simple JavaScript powered overlay search is included to search through a small data set which can be replaced with your own items.
+wp-overlay-restaurant combines a small page builder with an overlay search. It ships a custom meta box powered by [CMB2](https://github.com/CMB2/CMB2) to create flexible fullwidth or grid modules on pages or posts. A simple JavaScript powered overlay search is included to search through a small data set which can be replaced with your own items.
 
 ## Features
 
