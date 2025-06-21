@@ -8,7 +8,7 @@ function ffo_register_module_metabox() {
     $cmb = new_cmb2_box( array(
         'id'           => $prefix . 'modules',
         'title'        => __( 'Page Modules', 'freeflexoverlay' ),
-        'object_types' => array( 'page', 'post' ),
+        'object_types' => array( 'page', 'post', 'ffo_layout' ),
     ) );
     // Layout pattern select
     $cmb->add_field( array(

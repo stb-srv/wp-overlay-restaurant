@@ -3,7 +3,7 @@
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
 Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
-Version:           2.4.0
+Version:           2.5.0
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
 License:           MIT
@@ -14,7 +14,7 @@ Text Domain:       freeflexoverlay
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FFO_VERSION', '2.4.0' );
+define( 'FFO_VERSION', '2.5.0' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 
@@ -54,6 +54,31 @@ function ffo_init_plugin() {
 
     require_once FFO_DIR . 'includes/render-modules.php';
     add_shortcode( 'free_flexio_modules', 'ffo_render_modules_shortcode' );
+}
+
+add_action( 'init', 'ffo_register_layout_cpt' );
+function ffo_register_layout_cpt() {
+    $labels = array(
+        'name'               => __( 'Overlay Layouts', 'freeflexoverlay' ),
+        'singular_name'      => __( 'Overlay Layout', 'freeflexoverlay' ),
+        'add_new'            => __( 'Add Layout', 'freeflexoverlay' ),
+        'add_new_item'       => __( 'Add New Layout', 'freeflexoverlay' ),
+        'edit_item'          => __( 'Edit Layout', 'freeflexoverlay' ),
+        'new_item'           => __( 'New Layout', 'freeflexoverlay' ),
+        'view_item'          => __( 'View Layout', 'freeflexoverlay' ),
+        'search_items'       => __( 'Search Layouts', 'freeflexoverlay' ),
+        'not_found'          => __( 'No layouts found.', 'freeflexoverlay' ),
+        'not_found_in_trash' => __( 'No layouts found in Trash.', 'freeflexoverlay' ),
+    );
+
+    $args = array(
+        'labels'       => $labels,
+        'public'       => false,
+        'show_ui'      => true,
+        'show_in_menu' => true,
+        'supports'     => array( 'title' ),
+    );
+    register_post_type( 'ffo_layout', $args );
 }
 
 add_action( 'wp_enqueue_scripts', 'ffo_enqueue_assets' );

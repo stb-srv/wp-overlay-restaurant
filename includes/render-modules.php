@@ -2,14 +2,19 @@
 /**
  * Render modules and overlay search
  */
-function ffo_render_modules_shortcode() {
+function ffo_render_modules_shortcode( $atts = array() ) {
     global $post;
-    if ( ! ( $post instanceof WP_Post ) ) {
+    $atts = shortcode_atts( array( 'id' => 0 ), $atts, 'free_flexio_modules' );
+    $layout_post = $post;
+    if ( ! empty( $atts['id'] ) ) {
+        $layout_post = get_post( (int) $atts['id'] );
+    }
+    if ( ! ( $layout_post instanceof WP_Post ) ) {
         return '';
     }
     $prefix = 'ffo_';
     $output = '';
-    $pattern = get_post_meta( $post->ID, $prefix . 'layout_pattern', true );
+    $pattern = get_post_meta( $layout_post->ID, $prefix . 'layout_pattern', true );
     if ( $pattern && $pattern !== 'custom' ) {
         if ( $pattern === 'pattern1' ) {
             $output .= '<div class="ffo-fullwidth">' . __( 'Standard Fullwidth-Content', 'freeflexoverlay' ) . '</div>';
@@ -21,7 +26,7 @@ function ffo_render_modules_shortcode() {
             $output .= '<div class="ffo-grid"><!-- 4 Items --></div>';
         }
     } else {
-        $modules = get_post_meta( $post->ID, $prefix . 'modules_group', true );
+        $modules = get_post_meta( $layout_post->ID, $prefix . 'modules_group', true );
         if ( ! empty( $modules ) ) {
             foreach ( $modules as $mod ) {
                 if ( isset( $mod['layout_type'] ) && $mod['layout_type'] === 'fullwidth' ) {
