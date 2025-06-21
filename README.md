@@ -11,12 +11,16 @@ wp-overlay-restaurant combines a small page builder with an overlay search. It s
 
 ## Requirements
 
-The plugin relies on the CMB2 library. Either install the "CMB2" plugin from WordPress.org or copy the library into `includes/cmb2/` so that `includes/cmb2/init.php` exists.
+The plugin relies on the CMB2 library. If CMB2 isn't available the builder tries
+to install the latest version automatically from WordPress.org. You can also
+install CMB2 manually or copy the library into `includes/cmb2/` so that
+`includes/cmb2/init.php` exists.
 
 ## Installation
 
 1. Upload the plugin folder to your WordPress installation and activate it.
-2. Ensure the CMB2 library is available (see **Requirements**).
+2. The plugin attempts to fetch CMB2 on activation. If that fails, install CMB2
+   manually (see **Requirements**).
 3. Create or edit a page/post and configure modules via the **Page Modules** meta box.
 4. Insert the shortcode `[free_flexio_modules]` into the content where the modules and search should appear.
 
