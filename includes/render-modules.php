@@ -4,6 +4,9 @@
  */
 function ffo_render_modules_shortcode() {
     global $post;
+    if ( ! ( $post instanceof WP_Post ) ) {
+        return '';
+    }
     $prefix = 'ffo_';
     $output = '';
     $pattern = get_post_meta( $post->ID, $prefix . 'layout_pattern', true );
