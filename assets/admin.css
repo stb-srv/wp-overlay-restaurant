@@ -1,0 +1,10 @@
+#ffo-modules .ffo-module {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+}
+.ffo-remove-module {
+  color: #b32d2e;
+  text-decoration: none;
+}
