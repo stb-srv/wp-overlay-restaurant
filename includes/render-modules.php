@@ -17,9 +17,14 @@ function ffo_render_modules_shortcode( $atts = array() ) {
         return '';
     }
     $prefix = 'ffo_';
-    $output = '';
+    $output  = '';
     $pattern = get_post_meta( $layout_post->ID, $prefix . 'layout_pattern', true );
-    if ( $pattern && $pattern !== 'custom' ) {
+    $modules = get_post_meta( $layout_post->ID, $prefix . 'modules_group', true );
+
+    if ( $pattern && $pattern !== 'custom' && empty( $modules ) ) {
+        // When no custom modules exist output simple placeholders for the
+        // selected pattern. This keeps backward compatibility with older
+        // behaviour where the pattern rendered static demo content.
         if ( $pattern === 'pattern1' ) {
             $output .= '<div class="ffo-fullwidth">' . __( 'Standard Fullwidth-Content', 'freeflexoverlay' ) . '</div>';
             $output .= '<div class="ffo-grid"><!-- 4 Items --></div>';
@@ -30,8 +35,10 @@ function ffo_render_modules_shortcode( $atts = array() ) {
             $output .= '<div class="ffo-grid"><!-- 4 Items --></div>';
         }
     } else {
-        $modules = get_post_meta( $layout_post->ID, $prefix . 'modules_group', true );
-        if ( ! empty( $modules ) ) {
+        // Render modules saved via the meta box. These will be used for
+        // custom layouts and also override the placeholders of predefined
+        // patterns when provided by the user.
+        if ( ! empty( $modules ) && is_array( $modules ) ) {
             foreach ( $modules as $mod ) {
                 if ( isset( $mod['layout_type'] ) && $mod['layout_type'] === 'fullwidth' ) {
                     $output .= '<div class="ffo-module ffo-fullwidth">' . apply_filters( 'the_content', $mod['full_content'] ) . '</div>';
