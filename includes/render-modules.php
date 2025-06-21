@@ -7,7 +7,11 @@ function ffo_render_modules_shortcode( $atts = array() ) {
     $atts = shortcode_atts( array( 'id' => 0 ), $atts, 'free_flexio_modules' );
     $layout_post = $post;
     if ( ! empty( $atts['id'] ) ) {
-        $layout_post = get_post( (int) $atts['id'] );
+        if ( is_numeric( $atts['id'] ) ) {
+            $layout_post = get_post( (int) $atts['id'] );
+        } else {
+            $layout_post = get_page_by_path( sanitize_title( $atts['id'] ), OBJECT, 'ffo_layout' );
+        }
     }
     if ( ! ( $layout_post instanceof WP_Post ) ) {
         return '';

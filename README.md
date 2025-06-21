@@ -7,7 +7,7 @@ wp-overlay-restaurant combines a small page builder with an overlay search. It s
 - Add repeating modules to pages and posts (fullwidth sections or 2×2 grids)
 - Choose between predefined layout patterns or build custom sequences
 - Shortcode `[free_flexio_modules]` renders the modules and the overlay search
-- Create reusable layouts in the **Overlay Layouts** menu and reference them via `[free_flexio_modules id="123"]`
+- Create reusable layouts in the **Overlay Layouts** menu and reference them via `[free_flexio_modules id="123"]` (or by slug, e.g. `[free_flexio_modules id="startseite"]`)
 - Overlay search shows results in a centered modal
 
 ## Requirements
@@ -20,7 +20,7 @@ The plugin works best with the CMB2 library. When CMB2 is not present a simplifi
 2. Install and activate the CMB2 plugin if it isn't already present.
 3. Version 2.5.0 bundles a fallback meta box so the plugin works even without CMB2.
 4. Create a new entry under **Overlay Layouts** and configure modules via the **Page Modules** meta box.
-5. Insert the shortcode `[free_flexio_modules id="123"]` on any page, replacing `123` with the ID of your layout.
+5. Insert the shortcode `[free_flexio_modules id="123"]` on any page, replacing `123` with the layout ID. Slugs work as well, e.g. `[free_flexio_modules id="startseite"]`.
 
 ## Customising the search
 
