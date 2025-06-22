@@ -18,6 +18,45 @@ define( 'FFO_VERSION', '2.6.2' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 
+/**
+ * Allow Google Maps iframes in module content.
+ */
+add_filter( 'wp_kses_allowed_html', 'ffo_allow_map_iframe', 10, 2 );
+function ffo_allow_map_iframe( $tags, $context ) {
+    if ( 'post' === $context ) {
+        $iframe_atts = array(
+            'src'             => true,
+            'width'           => true,
+            'height'          => true,
+            'style'           => true,
+            'allowfullscreen' => true,
+            'loading'         => true,
+            'referrerpolicy'  => true,
+            'frameborder'     => true,
+        );
+
+        if ( isset( $tags['iframe'] ) && is_array( $tags['iframe'] ) ) {
+            $tags['iframe'] = array_merge( $tags['iframe'], $iframe_atts );
+        } else {
+            $tags['iframe'] = $iframe_atts;
+        }
+    }
+
+    return $tags;
+}
+
+/**
+ * Sanitize WYSIWYG content while allowing iframes.
+ *
+ * @param string $content HTML content.
+ * @return string Sanitized content.
+ */
+function ffo_kses_post_with_iframe( $content ) {
+    $allowed = wp_kses_allowed_html( 'post' );
+    $allowed = ffo_allow_map_iframe( $allowed, 'post' );
+    return wp_kses( $content, $allowed );
+}
+
 register_activation_hook( __FILE__, 'ffo_check_cmb2_on_activation' );
 function ffo_check_cmb2_on_activation() {
     if ( ! ffo_cmb2_available() ) {
