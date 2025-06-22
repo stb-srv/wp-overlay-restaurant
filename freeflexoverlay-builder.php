@@ -199,3 +199,15 @@ function ffo_pm_grid_remove_wpautop( $block_content, $block ) {
 
     return $block_content;
 }
+
+/**
+ * Strip empty <p> tags when our shortcode is present.
+ */
+add_filter( 'the_content', 'ffo_strip_empty_paragraphs', 9 );
+function ffo_strip_empty_paragraphs( $content ) {
+    if ( has_shortcode( $content, 'free_flexio_modules' ) ) {
+        $content = preg_replace( '/<p>\s*<\/p>/', '', $content );
+    }
+
+    return $content;
+}
