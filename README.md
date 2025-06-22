@@ -27,3 +27,24 @@ The plugin works best with the CMB2 library. When CMB2 is not present a simplifi
 ## License
 
 This project is released under the MIT license. See `LICENSE` for details.
+
+## Overlay Component
+
+The `assets/overlay.js` and `assets/overlay.css` files provide a configurable overlay.
+Call `showOverlay()` with your texts to display it. The `templates/overlay-template.html` file shows the data attributes you can use.
+You can also attach the overlay to any element with `showOverlayFromElement(element)` which reads those attributes.
+
+Example:
+```html
+<script>
+showOverlay({
+  overlayTitle: 'Titel',
+  tile1Content: 'Kachel 1',
+  tile2Content: 'Kachel 2',
+  tile3Content: 'Kachel 3',
+  tile4Content: 'Kachel 4',
+  ctaText: 'Mehr erfahren',
+  ctaUrl: '#'
+});
+</script>
+```

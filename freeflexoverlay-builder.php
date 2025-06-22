@@ -103,6 +103,9 @@ function ffo_layout_render_shortcode_column( $column, $post_id ) {
 add_action( 'wp_enqueue_scripts', 'ffo_enqueue_assets' );
 function ffo_enqueue_assets() {
     wp_enqueue_style( 'freeflexoverlay-style', FFO_URL . 'assets/style.css', [], FFO_VERSION );
+    // Overlay component assets
+    wp_enqueue_style( 'ffo-overlay', FFO_URL . 'assets/overlay.css', [], FFO_VERSION );
+    wp_enqueue_script( 'ffo-overlay', FFO_URL . 'assets/overlay.js', [], FFO_VERSION, true );
     // Previously a search script was enqueued here. It has been removed.
 }
 
