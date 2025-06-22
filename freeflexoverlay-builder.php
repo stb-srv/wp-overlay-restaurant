@@ -3,7 +3,7 @@
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
 Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
-Version:           2.6.1
+Version:           2.6.2
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
 License:           MIT
@@ -14,7 +14,7 @@ Text Domain:       freeflexoverlay
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FFO_VERSION', '2.6.1' );
+define( 'FFO_VERSION', '2.6.2' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 
@@ -79,6 +79,25 @@ function ffo_register_layout_cpt() {
         'supports'     => array( 'title' ),
     );
     register_post_type( 'ffo_layout', $args );
+}
+
+add_filter( 'manage_ffo_layout_posts_columns', 'ffo_layout_add_shortcode_column' );
+function ffo_layout_add_shortcode_column( $columns ) {
+    $new = array();
+    foreach ( $columns as $key => $label ) {
+        $new[ $key ] = $label;
+        if ( 'title' === $key ) {
+            $new['ffo_shortcode'] = __( 'Shortcode', 'freeflexoverlay' );
+        }
+    }
+    return $new;
+}
+
+add_action( 'manage_ffo_layout_posts_custom_column', 'ffo_layout_render_shortcode_column', 10, 2 );
+function ffo_layout_render_shortcode_column( $column, $post_id ) {
+    if ( 'ffo_shortcode' === $column ) {
+        echo '<code>[free_flexio_modules id="' . (int) $post_id . '"]</code>';
+    }
 }
 
 add_action( 'wp_enqueue_scripts', 'ffo_enqueue_assets' );
