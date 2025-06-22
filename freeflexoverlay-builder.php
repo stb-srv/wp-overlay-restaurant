@@ -184,3 +184,18 @@ function ffo_empty_module( $type ) {
         'grid_item_4'  => '',
     );
 }
+
+/**
+ * Remove wrapping <p> tags added by wpautop for the 'myplugin/pm-grid' block.
+ */
+add_filter( 'render_block', 'ffo_pm_grid_remove_wpautop', 10, 2 );
+function ffo_pm_grid_remove_wpautop( $block_content, $block ) {
+    if ( isset( $block['blockName'] ) && 'myplugin/pm-grid' === $block['blockName'] ) {
+        // Strip all outer <p> wrappers added by wpautop.
+        while ( preg_match( '#^\s*<p>(.*)</p>\s*$#s', $block_content, $m ) ) {
+            $block_content = $m[1];
+        }
+    }
+
+    return $block_content;
+}
