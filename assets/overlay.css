@@ -31,7 +31,7 @@
 .ffo-overlay__inner {
   position: relative;
   width: 90%;
-  max-width: 960px;
+/*  max-width: 960px; */
   animation: ffo-slide-up 0.4s ease forwards;
 }
 
