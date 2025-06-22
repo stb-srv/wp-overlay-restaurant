@@ -31,9 +31,9 @@
 /* Layout fullwidth-2x2-fullwidth */
 .pm-fullwidth {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   background: #fff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   min-height: 200px;
@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   grid-auto-rows: 1fr;
 }
 .pm-grid__item {
