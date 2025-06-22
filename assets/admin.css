@@ -8,3 +8,7 @@
   color: #b32d2e;
   text-decoration: none;
 }
+
+/* Fields for fullwidth-2x2-fullwidth layout */
+.ffo-fw2x2fw-field { display: none; }
+#ffo-fw2x2fw-fields { display: none; margin-top: 10px; }

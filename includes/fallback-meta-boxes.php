@@ -22,6 +22,7 @@ function ffo_render_fallback_metabox( $post ) {
             <option value="custom" <?php selected( $layout_pattern, 'custom' ); ?>><?php esc_html_e( 'Custom Modules', 'freeflexoverlay' ); ?></option>
             <option value="pattern1" <?php selected( $layout_pattern, 'pattern1' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
             <option value="pattern2" <?php selected( $layout_pattern, 'pattern2' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
+            <option value="fullwidth-2x2-fullwidth" <?php selected( $layout_pattern, 'fullwidth-2x2-fullwidth' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
             <option value="fullwidth" <?php selected( $layout_pattern, 'fullwidth' ); ?>><?php esc_html_e( 'Fullwidth Only', 'freeflexoverlay' ); ?></option>
             <option value="grid" <?php selected( $layout_pattern, 'grid' ); ?>><?php esc_html_e( '2×2 Grid Only', 'freeflexoverlay' ); ?></option>
         </select>
@@ -38,6 +39,26 @@ function ffo_render_fallback_metabox( $post ) {
     <p><button type="button" id="ffo-add-module" class="button"><?php esc_html_e( 'Add Module', 'freeflexoverlay' ); ?></button></p>
     <div id="ffo-module-template" style="display:none;">
         <?php ffo_render_single_module( '__index__', [] ); ?>
+    </div>
+
+    <div id="ffo-fw2x2fw-fields">
+        <p>
+            <label><?php esc_html_e( 'Fullwidth Top', 'freeflexoverlay' ); ?><br/>
+                <textarea name="ffo_fullwidth_top" rows="5" style="width:100%;"><?php echo esc_textarea( get_post_meta( $post->ID, $prefix . 'fullwidth_top', true ) ); ?></textarea>
+            </label>
+        </p>
+        <?php for ( $j = 1; $j <= 4; $j++ ) : ?>
+            <p>
+                <label><?php printf( esc_html__( 'Grid Item %d', 'freeflexoverlay' ), $j ); ?><br/>
+                    <textarea name="ffo_grid_item_<?php echo $j; ?>" rows="3" style="width:100%;"><?php echo esc_textarea( get_post_meta( $post->ID, $prefix . 'grid_item_' . $j, true ) ); ?></textarea>
+                </label>
+            </p>
+        <?php endfor; ?>
+        <p>
+            <label><?php esc_html_e( 'Fullwidth Bottom', 'freeflexoverlay' ); ?><br/>
+                <textarea name="ffo_fullwidth_bottom" rows="5" style="width:100%;"><?php echo esc_textarea( get_post_meta( $post->ID, $prefix . 'fullwidth_bottom', true ) ); ?></textarea>
+            </label>
+        </p>
     </div>
     <?php
 }
@@ -100,5 +121,16 @@ function ffo_save_fallback_metabox( $post_id ) {
         update_post_meta( $post_id, $prefix . 'modules_group', $modules );
     } else {
         delete_post_meta( $post_id, $prefix . 'modules_group' );
+    }
+
+    if ( isset( $_POST['ffo_layout_pattern'] ) && $_POST['ffo_layout_pattern'] === 'fullwidth-2x2-fullwidth' ) {
+        $fields = array( 'fullwidth_top', 'grid_item_1', 'grid_item_2', 'grid_item_3', 'grid_item_4', 'fullwidth_bottom' );
+        foreach ( $fields as $field ) {
+            if ( isset( $_POST[ 'ffo_' . $field ] ) ) {
+                update_post_meta( $post_id, $prefix . $field, wp_kses_post( $_POST[ 'ffo_' . $field ] ) );
+            } else {
+                delete_post_meta( $post_id, $prefix . $field );
+            }
+        }
     }
 }

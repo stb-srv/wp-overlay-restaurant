@@ -21,7 +21,12 @@ function ffo_render_modules_shortcode( $atts = array() ) {
     $pattern = get_post_meta( $layout_post->ID, $prefix . 'layout_pattern', true );
     $modules = get_post_meta( $layout_post->ID, $prefix . 'modules_group', true );
 
-    if ( $pattern && $pattern !== 'custom' && empty( $modules ) ) {
+    if ( $pattern === 'fullwidth-2x2-fullwidth' ) {
+        ob_start();
+        $post = $layout_post;
+        include FFO_DIR . 'templates/layout-fullwidth-2x2-fullwidth.php';
+        $output .= ob_get_clean();
+    } elseif ( $pattern && $pattern !== 'custom' && empty( $modules ) ) {
         // When no custom modules exist output simple placeholders for the
         // selected pattern. This keeps backward compatibility with older
         // behaviour where the pattern rendered static demo content.

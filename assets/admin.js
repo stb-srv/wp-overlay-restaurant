@@ -27,4 +27,18 @@ jQuery(document).ready(function($){
   $('#ffo-modules .ffo-module').each(function(){
     updateVisibility($(this));
   });
+
+  function updateLayoutFields(){
+    var val = $('#ffo_layout_pattern').val();
+    if(val === 'fullwidth-2x2-fullwidth'){
+      $('.ffo-fw2x2fw-field').closest('.cmb-row').show();
+      $('#ffo-fw2x2fw-fields').show();
+    }else{
+      $('.ffo-fw2x2fw-field').closest('.cmb-row').hide();
+      $('#ffo-fw2x2fw-fields').hide();
+    }
+  }
+
+  $('#ffo_layout_pattern').on('change', updateLayoutFields);
+  updateLayoutFields();
 });
