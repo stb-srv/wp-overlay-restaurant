@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   grid-auto-rows: 1fr;
 }
 .pm-grid__item {
