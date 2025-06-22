@@ -44,16 +44,7 @@
 .ffo-overlay__grid {
   display: grid;
   gap: var(--gap);
-}
-
-@media (max-width: 600px) {
-  .ffo-overlay__grid { grid-template-columns: 1fr; }
-}
-@media (min-width: 601px) and (max-width: 900px) {
-  .ffo-overlay__grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 901px) {
-  .ffo-overlay__grid { grid-template-columns: repeat(3, 1fr); }
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
 .ffo-overlay__tile {
@@ -61,6 +52,7 @@
   color: var(--tile-color);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
   padding: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
