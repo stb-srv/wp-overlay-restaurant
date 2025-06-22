@@ -2,10 +2,14 @@
   function showOverlay(params){
     var opts = Object.assign({
       overlayTitle: '',
-      tile1Content: '',
-      tile2Content: '',
-      tile3Content: '',
-      tile4Content: '',
+      tile1Title: '',
+      tile1Text: '',
+      tile2Title: '',
+      tile2Text: '',
+      tile3Title: '',
+      tile3Text: '',
+      tile4Title: '',
+      tile4Text: '',
       ctaText: '',
       ctaUrl: '#'
     }, params || {});
@@ -18,10 +22,22 @@
         '<button class="ffo-overlay__close" aria-label="Close Overlay">&times;</button>' +
         '<h2 class="ffo-overlay__title">' + opts.overlayTitle + '</h2>' +
         '<div class="ffo-overlay__grid">' +
-          '<div class="ffo-overlay__tile">' + opts.tile1Content + '</div>' +
-          '<div class="ffo-overlay__tile">' + opts.tile2Content + '</div>' +
-          '<div class="ffo-overlay__tile">' + opts.tile3Content + '</div>' +
-          '<div class="ffo-overlay__tile">' + opts.tile4Content + '</div>' +
+          '<div class="ffo-overlay__tile">' +
+            '<h3 class="ffo-overlay__tile-title">' + opts.tile1Title + '</h3>' +
+            '<p class="ffo-overlay__tile-text">' + opts.tile1Text + '</p>' +
+          '</div>' +
+          '<div class="ffo-overlay__tile">' +
+            '<h3 class="ffo-overlay__tile-title">' + opts.tile2Title + '</h3>' +
+            '<p class="ffo-overlay__tile-text">' + opts.tile2Text + '</p>' +
+          '</div>' +
+          '<div class="ffo-overlay__tile">' +
+            '<h3 class="ffo-overlay__tile-title">' + opts.tile3Title + '</h3>' +
+            '<p class="ffo-overlay__tile-text">' + opts.tile3Text + '</p>' +
+          '</div>' +
+          '<div class="ffo-overlay__tile">' +
+            '<h3 class="ffo-overlay__tile-title">' + opts.tile4Title + '</h3>' +
+            '<p class="ffo-overlay__tile-text">' + opts.tile4Text + '</p>' +
+          '</div>' +
         '</div>' +
         '<a class="ffo-overlay__cta" href="' + opts.ctaUrl + '">' + opts.ctaText + '</a>' +
       '</div>';
@@ -53,10 +69,14 @@
     var d = el.dataset;
     showOverlay({
       overlayTitle: d.overlayTitle || '',
-      tile1Content: d.tile1Content || '',
-      tile2Content: d.tile2Content || '',
-      tile3Content: d.tile3Content || '',
-      tile4Content: d.tile4Content || '',
+      tile1Title: d.tile1Title || '',
+      tile1Text: d.tile1Text || '',
+      tile2Title: d.tile2Title || '',
+      tile2Text: d.tile2Text || '',
+      tile3Title: d.tile3Title || '',
+      tile3Text: d.tile3Text || '',
+      tile4Title: d.tile4Title || '',
+      tile4Text: d.tile4Text || '',
       ctaText: d.ctaText || '',
       ctaUrl: d.ctaUrl || '#'
     });

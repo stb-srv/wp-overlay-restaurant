@@ -39,10 +39,14 @@ Example:
 <script>
 showOverlay({
   overlayTitle: 'Titel',
-  tile1Content: 'Kachel 1',
-  tile2Content: 'Kachel 2',
-  tile3Content: 'Kachel 3',
-  tile4Content: 'Kachel 4',
+  tile1Title: 'Überschrift 1',
+  tile1Text: 'Kachel 1 Text',
+  tile2Title: 'Überschrift 2',
+  tile2Text: 'Kachel 2 Text',
+  tile3Title: 'Überschrift 3',
+  tile3Text: 'Kachel 3 Text',
+  tile4Title: 'Überschrift 4',
+  tile4Text: 'Kachel 4 Text',
   ctaText: 'Mehr erfahren',
   ctaUrl: '#'
 });
