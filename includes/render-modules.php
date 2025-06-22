@@ -1,6 +1,6 @@
 <?php
 /**
- * Render modules and overlay search
+ * Render modules
  */
 function ffo_render_modules_shortcode( $atts = array() ) {
     global $post;
@@ -63,15 +63,7 @@ function ffo_render_modules_shortcode( $atts = array() ) {
             }
         }
     }
-    // Overlay Search Container
-    $output .= '<div class="ffo-search-wrapper">';
-    $output .= '<input type="text" id="ffo-search-input" placeholder="' . esc_attr__( 'Suche…', 'freeflexoverlay' ) . '">';
-    $output .= '<div id="ffo-search-overlay"><button id="ffo-overlay-close">&times;</button><div id="ffo-search-results"></div></div>';
-    $output .= '<div id="ffo-search-source" style="display:none;">';
-    $items = array( 'Margherita', 'Pepperoni', 'Caesar Salad', 'Greek Salad' );
-    foreach ( $items as $it ) {
-        $output .= '<div class="ffo-item"><h3 class="ffo-item-title">' . esc_html( $it ) . '</h3></div>';
-    }
-    $output .= '</div></div>';
+    // Previously an overlay search was appended here. The feature has been
+    // removed so only the module markup is returned.
     return $output;
 }
