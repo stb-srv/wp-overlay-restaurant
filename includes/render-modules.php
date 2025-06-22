@@ -9,6 +9,9 @@ function ffo_render_modules_shortcode( $atts = array() ) {
     if ( ! empty( $atts['id'] ) ) {
         if ( is_numeric( $atts['id'] ) ) {
             $layout_post = get_post( (int) $atts['id'] );
+            if ( ! $layout_post || $layout_post->post_type !== 'ffo_layout' ) {
+                $layout_post = get_page_by_path( sanitize_title( $atts['id'] ), OBJECT, 'ffo_layout' );
+            }
         } else {
             $layout_post = get_page_by_path( sanitize_title( $atts['id'] ), OBJECT, 'ffo_layout' );
         }
