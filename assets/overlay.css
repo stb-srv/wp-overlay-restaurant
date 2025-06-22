@@ -63,6 +63,17 @@
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
+.ffo-overlay__tile-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.ffo-overlay__tile-text {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 .ffo-overlay__cta {
   display: inline-block;
   margin-top: var(--gap);
