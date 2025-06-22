@@ -17,7 +17,6 @@ function ffo_register_module_metabox() {
         'type'    => 'select',
         'options' => array(
             'custom'                     => __( 'Custom Modules', 'freeflexoverlay' ),
-            'pattern1'                   => __( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ),
             'pattern2'                   => __( 'Fullwidth – 2×2 – 2×2 – Fullwidth', 'freeflexoverlay' ),
             'fullwidth-2x2-fullwidth'    => __( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ),
             'fullwidth'                  => __( 'Fullwidth Only', 'freeflexoverlay' ),
@@ -27,9 +26,10 @@ function ffo_register_module_metabox() {
     ) );
     // Module group
     $group_id = $cmb->add_field( array(
-        'id'      => $prefix . 'modules_group',
-        'type'    => 'group',
-        'options' => array(
+        'id'         => $prefix . 'modules_group',
+        'type'       => 'group',
+        'row_classes' => 'ffo-modules-group',
+        'options'    => array(
             'group_title'   => __( 'Modul {#}', 'freeflexoverlay' ),
             'add_button'    => __( 'Hinzufügen', 'freeflexoverlay' ),
             'remove_button' => __( 'Entfernen', 'freeflexoverlay' ),

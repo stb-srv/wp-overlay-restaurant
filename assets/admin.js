@@ -33,9 +33,13 @@ jQuery(document).ready(function($){
     if(val === 'fullwidth-2x2-fullwidth'){
       $('.ffo-fw2x2fw-field').closest('.cmb-row').show();
       $('#ffo-fw2x2fw-fields').show();
+      $('.ffo-modules-group').closest('.cmb-row').hide();
+      $('#ffo-modules, #ffo-add-module, #ffo-module-template').hide();
     }else{
       $('.ffo-fw2x2fw-field').closest('.cmb-row').hide();
       $('#ffo-fw2x2fw-fields').hide();
+      $('.ffo-modules-group').closest('.cmb-row').show();
+      $('#ffo-modules, #ffo-add-module, #ffo-module-template').show();
     }
   }
 

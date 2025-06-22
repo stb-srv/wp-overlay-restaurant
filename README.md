@@ -19,7 +19,7 @@ The plugin works best with the CMB2 library. When CMB2 is not present a simplifi
 
 1. Upload the plugin folder to your WordPress installation and activate it.
 2. Install and activate the CMB2 plugin if it isn't already present.
-3. Version 2.6.0 bundles a fallback meta box so the plugin works even without CMB2.
+3. Version 2.6.1 bundles a fallback meta box so the plugin works even without CMB2.
 4. Create a new entry under **Overlay Layouts** and configure modules via the **Page Modules** meta box.
 5. Insert the shortcode `[free_flexio_modules id="123"]` on any page, replacing `123` with the layout ID. Slugs work as well, e.g. `[free_flexio_modules id="startseite"]`.
 

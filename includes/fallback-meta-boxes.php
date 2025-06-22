@@ -20,7 +20,6 @@ function ffo_render_fallback_metabox( $post ) {
         <label for="ffo_layout_pattern"><?php esc_html_e( 'Layout Pattern', 'freeflexoverlay' ); ?></label>
         <select id="ffo_layout_pattern" name="ffo_layout_pattern">
             <option value="custom" <?php selected( $layout_pattern, 'custom' ); ?>><?php esc_html_e( 'Custom Modules', 'freeflexoverlay' ); ?></option>
-            <option value="pattern1" <?php selected( $layout_pattern, 'pattern1' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
             <option value="pattern2" <?php selected( $layout_pattern, 'pattern2' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
             <option value="fullwidth-2x2-fullwidth" <?php selected( $layout_pattern, 'fullwidth-2x2-fullwidth' ); ?>><?php esc_html_e( 'Fullwidth – 2×2 – Fullwidth', 'freeflexoverlay' ); ?></option>
             <option value="fullwidth" <?php selected( $layout_pattern, 'fullwidth' ); ?>><?php esc_html_e( 'Fullwidth Only', 'freeflexoverlay' ); ?></option>
