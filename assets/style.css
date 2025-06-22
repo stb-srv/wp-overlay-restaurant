@@ -38,11 +38,16 @@
   border-radius: 8px;
   min-height: 200px;
 }
+
+.pm-fullwidth--bottom {
+  margin-top: 0;
+}
+
 .pm-grid--2x2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   grid-auto-rows: 1fr;
 }
 .pm-grid__item {
