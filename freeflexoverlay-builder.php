@@ -250,3 +250,11 @@ function ffo_strip_empty_paragraphs( $content ) {
 
     return $content;
 }
+
+add_action( 'wp_enqueue_scripts', 'ffo_enqueue_overlay_css', 999 );
+function ffo_enqueue_overlay_css() {
+    $css = "\n.ffo-overlay {\n    position: relative;\n    width: 100vw !important;\n    left: 50% !important;\n    margin-left: -50vw !important;\n    margin-right: -50vw !important;\n    max-width: none !important;\n}\n.ffo-overlay__inner {\n    width: 100% !important;\n    max-width: none !important;\n    padding: 0 !important;\n}";
+    wp_register_style( 'ffo-inline-css', false );
+    wp_enqueue_style( 'ffo-inline-css' );
+    wp_add_inline_style( 'ffo-inline-css', $css );
+}
