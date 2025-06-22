@@ -5,15 +5,20 @@
   background: #f5f5f5;
   margin-bottom: 2rem;
 }
-.ffo-grid .ffo-row {
-  display: flex;
+.ffo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 1rem;
+  grid-auto-rows: 1fr;
+}
+.ffo-grid .ffo-row {
+  display: contents;
+  margin-bottom: 0;
 }
 .ffo-col {
   flex: 1;
   background: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
@@ -22,10 +27,16 @@
 
 /* Layout fullwidth-2x2-fullwidth */
 .pm-fullwidth { width: 100%; padding: 2rem; background: #f5f5f5; margin-bottom: 2rem; }
-.pm-grid--2x2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-bottom: 2rem; }
+.pm-grid--2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  grid-auto-rows: 1fr;
+}
 .pm-grid__item {
   background: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
 }
