@@ -186,7 +186,7 @@ function ffo_apply_pattern_defaults( $post_id ) {
     }
 
     $defaults = array();
-    if ( 'pattern1' === $pattern ) {
+    if ( in_array( $pattern, array( 'fullwidth-2x2-fullwidth', 'pattern1' ), true ) ) {
         $defaults = array(
             ffo_empty_module( 'fullwidth' ),
             ffo_empty_module( 'grid' ),

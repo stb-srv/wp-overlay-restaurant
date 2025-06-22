@@ -33,7 +33,7 @@ function ffo_render_modules_shortcode( $atts = array() ) {
         // When no custom modules exist output simple placeholders for the
         // selected pattern. This keeps backward compatibility with older
         // behaviour where the pattern rendered static demo content.
-        if ( $pattern === 'pattern1' ) {
+        if ( in_array( $pattern, array( 'fullwidth-2x2-fullwidth', 'pattern1' ), true ) ) {
             $output .= '<div class="ffo-fullwidth">' . __( 'Standard Fullwidth-Content', 'freeflexoverlay' ) . '</div>';
             $output .= '<div class="ffo-grid"><!-- 4 Items --></div>';
             $output .= '<div class="ffo-fullwidth">' . __( 'Standard Fullwidth-Content', 'freeflexoverlay' ) . '</div>';
