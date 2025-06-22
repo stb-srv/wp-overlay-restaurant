@@ -60,3 +60,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.pm-grid__item p,
+.pm-fullwidth p {
+  margin: 0;
+}
