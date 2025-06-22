@@ -55,6 +55,7 @@ function ffo_register_module_metabox() {
         'options'     => array(
             'textarea_rows' => 5,
         ),
+        'sanitization_cb' => 'ffo_kses_post_with_iframe',
     ) );
     for ( $i = 1; $i <= 4; $i++ ) {
         $cmb->add_group_field( $group_id, array(
@@ -65,6 +66,7 @@ function ffo_register_module_metabox() {
             'options'     => array(
                 'textarea_rows' => 3,
             ),
+            'sanitization_cb' => 'ffo_kses_post_with_iframe',
         ) );
     }
 
@@ -75,6 +77,7 @@ function ffo_register_module_metabox() {
         'type'        => 'wysiwyg',
         'row_classes' => 'ffo-fw2x2fw-field',
         'options'     => array( 'textarea_rows' => 5 ),
+        'sanitization_cb' => 'ffo_kses_post_with_iframe',
     ) );
     for ( $i = 1; $i <= 4; $i++ ) {
         $cmb->add_field( array(
@@ -83,6 +86,7 @@ function ffo_register_module_metabox() {
             'type'        => 'wysiwyg',
             'row_classes' => 'ffo-fw2x2fw-field',
             'options'     => array( 'textarea_rows' => 3 ),
+            'sanitization_cb' => 'ffo_kses_post_with_iframe',
         ) );
     }
     $cmb->add_field( array(
@@ -91,5 +95,6 @@ function ffo_register_module_metabox() {
         'type'        => 'wysiwyg',
         'row_classes' => 'ffo-fw2x2fw-field',
         'options'     => array( 'textarea_rows' => 5 ),
+        'sanitization_cb' => 'ffo_kses_post_with_iframe',
     ) );
 }

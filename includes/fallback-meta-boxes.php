@@ -110,11 +110,11 @@ function ffo_save_fallback_metabox( $post_id ) {
         foreach ( $_POST['ffo_modules_group'] as $module ) {
             $modules[] = [
                 'layout_type'  => isset( $module['layout_type'] ) ? sanitize_text_field( $module['layout_type'] ) : '',
-                'full_content' => isset( $module['full_content'] ) ? wp_kses_post( $module['full_content'] ) : '',
-                'grid_item_1'  => isset( $module['grid_item_1'] ) ? wp_kses_post( $module['grid_item_1'] ) : '',
-                'grid_item_2'  => isset( $module['grid_item_2'] ) ? wp_kses_post( $module['grid_item_2'] ) : '',
-                'grid_item_3'  => isset( $module['grid_item_3'] ) ? wp_kses_post( $module['grid_item_3'] ) : '',
-                'grid_item_4'  => isset( $module['grid_item_4'] ) ? wp_kses_post( $module['grid_item_4'] ) : '',
+                'full_content' => isset( $module['full_content'] ) ? ffo_kses_post_with_iframe( $module['full_content'] ) : '',
+                'grid_item_1'  => isset( $module['grid_item_1'] ) ? ffo_kses_post_with_iframe( $module['grid_item_1'] ) : '',
+                'grid_item_2'  => isset( $module['grid_item_2'] ) ? ffo_kses_post_with_iframe( $module['grid_item_2'] ) : '',
+                'grid_item_3'  => isset( $module['grid_item_3'] ) ? ffo_kses_post_with_iframe( $module['grid_item_3'] ) : '',
+                'grid_item_4'  => isset( $module['grid_item_4'] ) ? ffo_kses_post_with_iframe( $module['grid_item_4'] ) : '',
             ];
         }
         update_post_meta( $post_id, $prefix . 'modules_group', $modules );
@@ -126,7 +126,7 @@ function ffo_save_fallback_metabox( $post_id ) {
         $fields = array( 'fullwidth_top', 'grid_item_1', 'grid_item_2', 'grid_item_3', 'grid_item_4', 'fullwidth_bottom' );
         foreach ( $fields as $field ) {
             if ( isset( $_POST[ 'ffo_' . $field ] ) ) {
-                update_post_meta( $post_id, $prefix . $field, wp_kses_post( $_POST[ 'ffo_' . $field ] ) );
+                update_post_meta( $post_id, $prefix . $field, ffo_kses_post_with_iframe( $_POST[ 'ffo_' . $field ] ) );
             } else {
                 delete_post_meta( $post_id, $prefix . $field );
             }
