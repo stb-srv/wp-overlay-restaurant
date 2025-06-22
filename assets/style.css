@@ -65,3 +65,16 @@
 .pm-fullwidth p {
   margin: 0;
 }
+
+/* === Symmetrischer Abstand zwischen FW-Top, Grid und FW-Bottom === */
+.pm-fullwidth--top {
+  margin-bottom: 2rem !important;
+}
+.pm-grid {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  gap: 2rem !important;
+}
+.pm-fullwidth--bottom {
+  margin-top: 2rem !important;
+}
