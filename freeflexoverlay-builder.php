@@ -2,7 +2,7 @@
 /*
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
-Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid) und mittig zentrierte Overlay-Suche.
+Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid).
 Version:           2.6.2
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
@@ -103,7 +103,7 @@ function ffo_layout_render_shortcode_column( $column, $post_id ) {
 add_action( 'wp_enqueue_scripts', 'ffo_enqueue_assets' );
 function ffo_enqueue_assets() {
     wp_enqueue_style( 'freeflexoverlay-style', FFO_URL . 'assets/style.css', [], FFO_VERSION );
-    wp_enqueue_script( 'freeflexoverlay-script', FFO_URL . 'assets/script.js', [ 'jquery' ], FFO_VERSION, true );
+    // Previously a search script was enqueued here. It has been removed.
 }
 
 add_action( 'admin_enqueue_scripts', 'ffo_admin_assets' );
