@@ -53,7 +53,11 @@ function ffo_render_modules_shortcode( $atts = array() ) {
                 } elseif ( isset( $mod['layout_type'] ) && $mod['layout_type'] === 'grid' ) {
                     $output .= '<div class="ffo-module ffo-grid"><div class="ffo-row">';
                     for ( $i = 1; $i <= 4; $i++ ) {
-                        $output .= '<div class="ffo-col">' . apply_filters( 'the_content', $mod['grid_item_' . $i] ) . '</div>';
+                        $output .= '<div class="ffo-col">';
+                        if ( ! empty( $mod['grid_heading_' . $i] ) ) {
+                            $output .= '<h3 class="ffo-grid-heading">' . esc_html( $mod['grid_heading_' . $i] ) . '</h3>';
+                        }
+                        $output .= apply_filters( 'the_content', $mod['grid_item_' . $i] ) . '</div>';
                         if ( $i % 2 === 0 && $i < 4 ) {
                             $output .= '</div><div class="ffo-row">';
                         }

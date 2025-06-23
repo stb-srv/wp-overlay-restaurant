@@ -217,9 +217,13 @@ function ffo_empty_module( $type ) {
     return array(
         'layout_type'  => $type,
         'full_content' => '',
+        'grid_heading_1' => '',
         'grid_item_1'  => '',
+        'grid_heading_2' => '',
         'grid_item_2'  => '',
+        'grid_heading_3' => '',
         'grid_item_3'  => '',
+        'grid_heading_4' => '',
         'grid_item_4'  => '',
     );
 }

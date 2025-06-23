@@ -91,6 +91,12 @@
   margin-top: 2rem !important;
 }
 
+.ffo-grid-heading {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
 /* Map iframe styling */
 .ffo-fullwidth iframe,
 .ffo-col iframe,

@@ -59,6 +59,12 @@ function ffo_register_module_metabox() {
     ) );
     for ( $i = 1; $i <= 4; $i++ ) {
         $cmb->add_group_field( $group_id, array(
+            'name'        => sprintf( __( 'Grid Item %d Title', 'freeflexoverlay' ), $i ),
+            'id'          => 'grid_heading_' . $i,
+            'type'        => 'text',
+            'row_classes' => 'ffo-field-grid',
+        ) );
+        $cmb->add_group_field( $group_id, array(
             'name'        => sprintf( __( 'Grid Item %d', 'freeflexoverlay' ), $i ),
             'id'          => 'grid_item_' . $i,
             'type'        => 'wysiwyg',
@@ -80,6 +86,12 @@ function ffo_register_module_metabox() {
         'sanitization_cb' => 'ffo_kses_post_with_iframe',
     ) );
     for ( $i = 1; $i <= 4; $i++ ) {
+        $cmb->add_field( array(
+            'name'        => sprintf( __( 'Grid Item %d Title', 'freeflexoverlay' ), $i ),
+            'id'          => $prefix . 'grid_heading_' . $i,
+            'type'        => 'text',
+            'row_classes' => 'ffo-fw2x2fw-field',
+        ) );
         $cmb->add_field( array(
             'name'        => sprintf( __( 'Grid Item %d', 'freeflexoverlay' ), $i ),
             'id'          => $prefix . 'grid_item_' . $i,

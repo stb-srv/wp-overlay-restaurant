@@ -48,6 +48,11 @@ function ffo_render_fallback_metabox( $post ) {
         </p>
         <?php for ( $j = 1; $j <= 4; $j++ ) : ?>
             <p>
+                <label><?php printf( esc_html__( 'Grid Item %d Title', 'freeflexoverlay' ), $j ); ?><br/>
+                    <input type="text" name="ffo_grid_heading_<?php echo $j; ?>" value="<?php echo esc_attr( get_post_meta( $post->ID, $prefix . 'grid_heading_' . $j, true ) ); ?>" style="width:100%;" />
+                </label>
+            </p>
+            <p>
                 <label><?php printf( esc_html__( 'Grid Item %d', 'freeflexoverlay' ), $j ); ?><br/>
                     <textarea name="ffo_grid_item_<?php echo $j; ?>" rows="3" style="width:100%;"><?php echo esc_textarea( get_post_meta( $post->ID, $prefix . 'grid_item_' . $j, true ) ); ?></textarea>
                 </label>
@@ -81,6 +86,11 @@ function ffo_render_single_module( $index, $mod ) {
         </p>
         <?php for ( $j = 1; $j <= 4; $j++ ) : ?>
             <p class="ffo-field-grid">
+                <label><?php printf( esc_html__( 'Grid Item %d Title', 'freeflexoverlay' ), $j ); ?><br/>
+                    <input type="text" name="ffo_modules_group[<?php echo esc_attr( $index ); ?>][grid_heading_<?php echo $j; ?>]" value="<?php echo isset( $mod['grid_heading_' . $j] ) ? esc_attr( $mod['grid_heading_' . $j] ) : ''; ?>" style="width:100%;" />
+                </label>
+            </p>
+            <p class="ffo-field-grid">
                 <label><?php printf( esc_html__( 'Grid Item %d', 'freeflexoverlay' ), $j ); ?><br/>
                     <textarea name="ffo_modules_group[<?php echo esc_attr( $index ); ?>][grid_item_<?php echo $j; ?>]" rows="3" style="width:100%;"><?php echo isset( $mod['grid_item_' . $j] ) ? esc_textarea( $mod['grid_item_' . $j] ) : ''; ?></textarea>
                 </label>
@@ -109,12 +119,16 @@ function ffo_save_fallback_metabox( $post_id ) {
         $modules = [];
         foreach ( $_POST['ffo_modules_group'] as $module ) {
             $modules[] = [
-                'layout_type'  => isset( $module['layout_type'] ) ? sanitize_text_field( $module['layout_type'] ) : '',
-                'full_content' => isset( $module['full_content'] ) ? ffo_kses_post_with_iframe( $module['full_content'] ) : '',
-                'grid_item_1'  => isset( $module['grid_item_1'] ) ? ffo_kses_post_with_iframe( $module['grid_item_1'] ) : '',
-                'grid_item_2'  => isset( $module['grid_item_2'] ) ? ffo_kses_post_with_iframe( $module['grid_item_2'] ) : '',
-                'grid_item_3'  => isset( $module['grid_item_3'] ) ? ffo_kses_post_with_iframe( $module['grid_item_3'] ) : '',
-                'grid_item_4'  => isset( $module['grid_item_4'] ) ? ffo_kses_post_with_iframe( $module['grid_item_4'] ) : '',
+                'layout_type'    => isset( $module['layout_type'] ) ? sanitize_text_field( $module['layout_type'] ) : '',
+                'full_content'   => isset( $module['full_content'] ) ? ffo_kses_post_with_iframe( $module['full_content'] ) : '',
+                'grid_heading_1' => isset( $module['grid_heading_1'] ) ? sanitize_text_field( $module['grid_heading_1'] ) : '',
+                'grid_item_1'    => isset( $module['grid_item_1'] ) ? ffo_kses_post_with_iframe( $module['grid_item_1'] ) : '',
+                'grid_heading_2' => isset( $module['grid_heading_2'] ) ? sanitize_text_field( $module['grid_heading_2'] ) : '',
+                'grid_item_2'    => isset( $module['grid_item_2'] ) ? ffo_kses_post_with_iframe( $module['grid_item_2'] ) : '',
+                'grid_heading_3' => isset( $module['grid_heading_3'] ) ? sanitize_text_field( $module['grid_heading_3'] ) : '',
+                'grid_item_3'    => isset( $module['grid_item_3'] ) ? ffo_kses_post_with_iframe( $module['grid_item_3'] ) : '',
+                'grid_heading_4' => isset( $module['grid_heading_4'] ) ? sanitize_text_field( $module['grid_heading_4'] ) : '',
+                'grid_item_4'    => isset( $module['grid_item_4'] ) ? ffo_kses_post_with_iframe( $module['grid_item_4'] ) : '',
             ];
         }
         update_post_meta( $post_id, $prefix . 'modules_group', $modules );
@@ -123,7 +137,12 @@ function ffo_save_fallback_metabox( $post_id ) {
     }
 
     if ( isset( $_POST['ffo_layout_pattern'] ) && $_POST['ffo_layout_pattern'] === 'fullwidth-2x2-fullwidth' ) {
-        $fields = array( 'fullwidth_top', 'grid_item_1', 'grid_item_2', 'grid_item_3', 'grid_item_4', 'fullwidth_bottom' );
+        $fields = array( 'fullwidth_top',
+            'grid_heading_1', 'grid_item_1',
+            'grid_heading_2', 'grid_item_2',
+            'grid_heading_3', 'grid_item_3',
+            'grid_heading_4', 'grid_item_4',
+            'fullwidth_bottom' );
         foreach ( $fields as $field ) {
             if ( isset( $_POST[ 'ffo_' . $field ] ) ) {
                 update_post_meta( $post_id, $prefix . $field, ffo_kses_post_with_iframe( $_POST[ 'ffo_' . $field ] ) );
