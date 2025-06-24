@@ -40,6 +40,19 @@
   animation: ffo-slide-up 0.4s ease forwards;
 }
 
+/* Responsive sizing of the overlay container */
+@media (max-width: 600px) {
+  .ffo-overlay__inner {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ffo-overlay__inner {
+    width: 60%;
+  }
+}
+
 .ffo-overlay__title {
   color: var(--tile-color);
   text-align: center;

@@ -63,3 +63,8 @@ controlled through `--tile-text-size`.
 When calling `showOverlay()` you can also pass `overlayTitleSize`,
 `tileTitleSize` and `tileTextSize` options (or set the corresponding
 `data-*-size` attributes) to set these values for a single overlay.
+
+The overlay container automatically adjusts its width for different
+screen sizes. On narrow screens it becomes almost full width while on
+large screens it shrinks a bit for a more balanced appearance. These
+breakpoints can be customised in `assets/overlay.css` if needed.
