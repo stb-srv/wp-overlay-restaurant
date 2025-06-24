@@ -127,7 +127,8 @@ body.dark-mode {
   background: transparent;
   border: none;
   font-size: 2rem;
-  color: var(--tile-bg);
+  /* Use text colour so the close button stays visible in dark mode */
+  color: var(--tile-color);
   line-height: 1;
   cursor: pointer;
 }
