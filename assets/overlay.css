@@ -72,6 +72,12 @@ body.dark-mode {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
+@media (max-width: 600px) {
+  .ffo-overlay__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .ffo-overlay__tile {
   background: var(--tile-bg);
   color: var(--tile-color);
