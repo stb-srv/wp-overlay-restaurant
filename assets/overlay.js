@@ -19,6 +19,18 @@
       tile2TitleSize: '',
       tile3TitleSize: '',
       tile4TitleSize: '',
+      tile1TextSize: '',
+      tile2TextSize: '',
+      tile3TextSize: '',
+      tile4TextSize: '',
+      tile1TextColor: '',
+      tile2TextColor: '',
+      tile3TextColor: '',
+      tile4TextColor: '',
+      tile1TextFont: '',
+      tile2TextFont: '',
+      tile3TextFont: '',
+      tile4TextFont: '',
       tile1TitleColor: '',
       tile2TitleColor: '',
       tile3TitleColor: '',
@@ -52,25 +64,33 @@
             '<h3 class="ffo-overlay__tile-title"' +
               buildStyle(opts.tile1TitleSize, opts.tile1TitleColor, opts.tile1TitleFont) +
             '>' + opts.tile1Title + '</h3>' +
-            '<p class="ffo-overlay__tile-text">' + opts.tile1Text + '</p>' +
+            '<p class="ffo-overlay__tile-text"' +
+              buildStyle(opts.tile1TextSize, opts.tile1TextColor, opts.tile1TextFont) +
+            '>' + opts.tile1Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
             '<h3 class="ffo-overlay__tile-title"' +
               buildStyle(opts.tile2TitleSize, opts.tile2TitleColor, opts.tile2TitleFont) +
             '>' + opts.tile2Title + '</h3>' +
-            '<p class="ffo-overlay__tile-text">' + opts.tile2Text + '</p>' +
+            '<p class="ffo-overlay__tile-text"' +
+              buildStyle(opts.tile2TextSize, opts.tile2TextColor, opts.tile2TextFont) +
+            '>' + opts.tile2Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
             '<h3 class="ffo-overlay__tile-title"' +
               buildStyle(opts.tile3TitleSize, opts.tile3TitleColor, opts.tile3TitleFont) +
             '>' + opts.tile3Title + '</h3>' +
-            '<p class="ffo-overlay__tile-text">' + opts.tile3Text + '</p>' +
+            '<p class="ffo-overlay__tile-text"' +
+              buildStyle(opts.tile3TextSize, opts.tile3TextColor, opts.tile3TextFont) +
+            '>' + opts.tile3Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
             '<h3 class="ffo-overlay__tile-title"' +
               buildStyle(opts.tile4TitleSize, opts.tile4TitleColor, opts.tile4TitleFont) +
             '>' + opts.tile4Title + '</h3>' +
-            '<p class="ffo-overlay__tile-text">' + opts.tile4Text + '</p>' +
+            '<p class="ffo-overlay__tile-text"' +
+              buildStyle(opts.tile4TextSize, opts.tile4TextColor, opts.tile4TextFont) +
+            '>' + opts.tile4Text + '</p>' +
           '</div>' +
         '</div>' +
         '<a class="ffo-overlay__cta" href="' + opts.ctaUrl + '">' + opts.ctaText + '</a>' +
@@ -116,6 +136,18 @@
       overlayTitleSize: d.overlayTitleSize || '',
       tileTitleSize: d.tileTitleSize || '',
       tileTextSize: d.tileTextSize || '',
+      tile1TextSize: d.tile1TextSize || '',
+      tile2TextSize: d.tile2TextSize || '',
+      tile3TextSize: d.tile3TextSize || '',
+      tile4TextSize: d.tile4TextSize || '',
+      tile1TextColor: d.tile1TextColor || '',
+      tile2TextColor: d.tile2TextColor || '',
+      tile3TextColor: d.tile3TextColor || '',
+      tile4TextColor: d.tile4TextColor || '',
+      tile1TextFont: d.tile1TextFont || '',
+      tile2TextFont: d.tile2TextFont || '',
+      tile3TextFont: d.tile3TextFont || '',
+      tile4TextFont: d.tile4TextFont || '',
       tile1TitleSize: d.tile1TitleSize || '',
       tile2TitleSize: d.tile2TitleSize || '',
       tile3TitleSize: d.tile3TitleSize || '',
