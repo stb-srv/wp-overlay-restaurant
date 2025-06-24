@@ -52,3 +52,9 @@ showOverlay({
 });
 </script>
 ```
+
+### Styling the overlay
+
+The overlay uses several CSS variables that can be overridden to control its
+appearance. In particular the heading sizes can be changed via
+`--overlay-title-size` and `--tile-title-size`.
