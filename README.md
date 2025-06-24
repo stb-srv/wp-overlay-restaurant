@@ -86,4 +86,5 @@ The default styles use light colours but the plugin now supports a body
 class `dark-mode`. When that class is present the overlay and module
 elements switch to darker backgrounds and lighter text. If another
 dark‑mode plugin toggles that class the components will adjust
-automatically.
+automatically. The admin interface respects the same class so module
+controls remain usable when a backend dark‑mode plugin is active.

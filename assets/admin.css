@@ -12,3 +12,13 @@
 /* Fields for fullwidth-2x2-fullwidth layout */
 .ffo-fw2x2fw-field { display: none; }
 #ffo-fw2x2fw-fields { display: none; margin-top: 10px; }
+
+/* Dark mode adjustments for the admin screens */
+body.dark-mode #ffo-modules .ffo-module {
+  background: #2b2b2b;
+  border-color: #555;
+  color: #eee;
+}
+body.dark-mode .ffo-remove-module {
+  color: #f88;
+}
