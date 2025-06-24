@@ -71,7 +71,6 @@
   color: var(--tile-color);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  aspect-ratio: 1 / 1;
   padding: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
