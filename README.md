@@ -57,4 +57,9 @@ showOverlay({
 
 The overlay uses several CSS variables that can be overridden to control its
 appearance. In particular the heading sizes can be changed via
-`--overlay-title-size` and `--tile-title-size`.
+`--overlay-title-size` and `--tile-title-size`. The tile text size is
+controlled through `--tile-text-size`.
+
+When calling `showOverlay()` you can also pass `overlayTitleSize`,
+`tileTitleSize` and `tileTextSize` options (or set the corresponding
+`data-*-size` attributes) to set these values for a single overlay.

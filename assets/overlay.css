@@ -8,6 +8,7 @@
   /* Font sizes can be customised by overriding these variables */
   --overlay-title-size: 1.5rem;
   --tile-title-size: 1.1rem;
+  --tile-text-size: 0.9rem;
 }
 
 .ffo-overlay {
@@ -81,7 +82,7 @@
 
 .ffo-overlay__tile-text {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: var(--tile-text-size);
   text-align: center;
 }
 
