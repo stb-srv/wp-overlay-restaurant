@@ -5,6 +5,9 @@
   --radius: 8px;
   --shadow: 0 2px 10px rgba(0,0,0,0.2);
   --gap: 1rem;
+  /* Font sizes can be customised by overriding these variables */
+  --overlay-title-size: 1.5rem;
+  --tile-title-size: 1.1rem;
 }
 
 .ffo-overlay {
@@ -40,6 +43,7 @@
   color: var(--tile-color);
   text-align: center;
   margin: 0 0 var(--gap) 0;
+  font-size: var(--overlay-title-size);
 }
 
 .ffo-overlay__grid {
@@ -56,6 +60,11 @@
   aspect-ratio: 1 / 1;
   padding: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .ffo-overlay__tile:hover {
@@ -66,12 +75,14 @@
 .ffo-overlay__tile-title {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: var(--tile-title-size);
+  text-align: center;
 }
 
 .ffo-overlay__tile-text {
   margin: 0;
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .ffo-overlay__cta {
