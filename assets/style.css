@@ -118,3 +118,12 @@
   border-radius: 8px;
   display: block;
 }
+
+body.dark-mode .ffo-fullwidth,
+body.dark-mode .ffo-col,
+body.dark-mode .pm-fullwidth,
+body.dark-mode .pm-grid__item {
+  background: #333;
+  border-color: #555;
+  color: #eee;
+}

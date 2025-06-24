@@ -11,6 +11,12 @@
   --tile-text-size: clamp(0.85rem, 1.3vw, 0.95rem);
 }
 
+body.dark-mode {
+  --overlay-bg: rgba(0, 0, 0, 0.8);
+  --tile-bg: #2b2b2b;
+  --tile-color: #f1f1f1;
+}
+
 .ffo-overlay {
   position: fixed;
   top: 0;

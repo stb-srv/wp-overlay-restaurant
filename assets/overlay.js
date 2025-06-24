@@ -14,7 +14,11 @@
       ctaUrl: '#',
       overlayTitleSize: '',
       tileTitleSize: '',
-      tileTextSize: ''
+      tileTextSize: '',
+      tile1TitleSize: '',
+      tile2TitleSize: '',
+      tile3TitleSize: '',
+      tile4TitleSize: ''
     }, params || {});
 
     var overlay = document.createElement('div');
@@ -29,19 +33,27 @@
         '<h2 class="ffo-overlay__title">' + opts.overlayTitle + '</h2>' +
         '<div class="ffo-overlay__grid">' +
           '<div class="ffo-overlay__tile">' +
-            '<h3 class="ffo-overlay__tile-title">' + opts.tile1Title + '</h3>' +
+            '<h3 class="ffo-overlay__tile-title"' +
+              (opts.tile1TitleSize ? ' style="font-size:' + opts.tile1TitleSize + ';"' : '') +
+            '>' + opts.tile1Title + '</h3>' +
             '<p class="ffo-overlay__tile-text">' + opts.tile1Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
-            '<h3 class="ffo-overlay__tile-title">' + opts.tile2Title + '</h3>' +
+            '<h3 class="ffo-overlay__tile-title"' +
+              (opts.tile2TitleSize ? ' style="font-size:' + opts.tile2TitleSize + ';"' : '') +
+            '>' + opts.tile2Title + '</h3>' +
             '<p class="ffo-overlay__tile-text">' + opts.tile2Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
-            '<h3 class="ffo-overlay__tile-title">' + opts.tile3Title + '</h3>' +
+            '<h3 class="ffo-overlay__tile-title"' +
+              (opts.tile3TitleSize ? ' style="font-size:' + opts.tile3TitleSize + ';"' : '') +
+            '>' + opts.tile3Title + '</h3>' +
             '<p class="ffo-overlay__tile-text">' + opts.tile3Text + '</p>' +
           '</div>' +
           '<div class="ffo-overlay__tile">' +
-            '<h3 class="ffo-overlay__tile-title">' + opts.tile4Title + '</h3>' +
+            '<h3 class="ffo-overlay__tile-title"' +
+              (opts.tile4TitleSize ? ' style="font-size:' + opts.tile4TitleSize + ';"' : '') +
+            '>' + opts.tile4Title + '</h3>' +
             '<p class="ffo-overlay__tile-text">' + opts.tile4Text + '</p>' +
           '</div>' +
         '</div>' +
@@ -87,7 +99,11 @@
       ctaUrl: d.ctaUrl || '#',
       overlayTitleSize: d.overlayTitleSize || '',
       tileTitleSize: d.tileTitleSize || '',
-      tileTextSize: d.tileTextSize || ''
+      tileTextSize: d.tileTextSize || '',
+      tile1TitleSize: d.tile1TitleSize || '',
+      tile2TitleSize: d.tile2TitleSize || '',
+      tile3TitleSize: d.tile3TitleSize || '',
+      tile4TitleSize: d.tile4TitleSize || ''
     });
   };
 })();
