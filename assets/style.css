@@ -133,3 +133,14 @@ body.dark-mode .pm-grid__item {
   border-color: #555;
   color: #eee;
 }
+
+@media (prefers-color-scheme: dark) {
+  .ffo-fullwidth,
+  .ffo-col,
+  .pm-fullwidth,
+  .pm-grid__item {
+    background: #333;
+    border-color: #555;
+    color: #eee;
+  }
+}

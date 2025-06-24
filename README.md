@@ -82,9 +82,11 @@ iframes keep a 16:9 ratio so content remains readable on any device.
 
 ### Dark Mode
 
-The default styles use light colours but the plugin now supports a body
-class `dark-mode`. When that class is present the overlay and module
-elements switch to darker backgrounds and lighter text. If another
-dark‑mode plugin toggles that class the components will adjust
-automatically. The admin interface respects the same class so module
-controls remain usable when a backend dark‑mode plugin is active.
+The default styles use light colours but the plugin supports both a body
+class `dark-mode` and automatic detection via the
+`prefers-color-scheme` media query. When a dark scheme is active the
+overlay and module elements switch to darker backgrounds and lighter
+text. If another dark‑mode plugin toggles the class the components will
+adjust automatically. The admin interface respects the same class and
+media query so module controls remain usable when a backend dark‑mode
+plugin is active.
