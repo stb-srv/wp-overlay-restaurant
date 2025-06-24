@@ -66,5 +66,7 @@ When calling `showOverlay()` you can also pass `overlayTitleSize`,
 
 The overlay container automatically adjusts its width for different
 screen sizes. On narrow screens it becomes almost full width while on
-large screens it shrinks a bit for a more balanced appearance. These
-breakpoints can be customised in `assets/overlay.css` if needed.
+large screens it shrinks a bit for a more balanced appearance. The tile
+heights now grow with their content so text is no longer clipped. This
+behaviour and the breakpoints can be customised in `assets/overlay.css`
+if needed.
