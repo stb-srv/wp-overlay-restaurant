@@ -3,7 +3,7 @@
 Plugin Name:       wp-overlay-restaurant
 Plugin URI:        https://stb-srv.de/
 Description:       Kombiniert modulare Page-Builder-Module (Fullwidth & 2×2 Grid).
-Version:           2.6.2
+Version:           2.7.0
 Author:            stb-srv
 Author URI:        https://stb-srv.de/
 License:           MIT
@@ -14,7 +14,7 @@ Text Domain:       freeflexoverlay
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FFO_VERSION', '2.6.2' );
+define( 'FFO_VERSION', '2.7.0' );
 define( 'FFO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FFO_URL', plugin_dir_url( __FILE__ ) );
 

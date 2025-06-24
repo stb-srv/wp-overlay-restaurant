@@ -19,7 +19,7 @@ The plugin works best with the CMB2 library. When CMB2 is not present a simplifi
 
 1. Upload the plugin folder to your WordPress installation and activate it.
 2. Install and activate the CMB2 plugin if it isn't already present.
-3. Version 2.6.2 bundles a fallback meta box so the plugin works even without CMB2.
+3. Version 2.7.0 bundles a fallback meta box so the plugin works even without CMB2.
 4. Create a new entry under **Overlay Layouts** and configure modules via the **Page Modules** meta box.
 5. Insert the shortcode `[free_flexio_modules id="123"]` on any page, replacing `123` with the layout ID. Slugs work as well, e.g. `[free_flexio_modules id="startseite"]`.
 
@@ -62,7 +62,9 @@ controlled through `--tile-text-size`.
 
 When calling `showOverlay()` you can also pass `overlayTitleSize`,
 `tileTitleSize` and `tileTextSize` options (or set the corresponding
-`data-*-size` attributes) to set these values for a single overlay.
+`data-*-size` attributes) to set these values for a single overlay. If you need
+different heading sizes for each tile you can additionally pass
+`tile1TitleSize` … `tile4TitleSize` (or `data-tile1-title-size` and so on).
 
 The overlay container automatically adjusts its width for different
 screen sizes. On narrow screens it becomes almost full width while on
@@ -72,3 +74,11 @@ behaviour and the breakpoints can be customised in `assets/overlay.css`
 if needed.
 Font sizes now use CSS `clamp()` to adapt to the viewport and
 iframes keep a 16:9 ratio so content remains readable on any device.
+
+### Dark Mode
+
+The default styles use light colours but the plugin now supports a body
+class `dark-mode`. When that class is present the overlay and module
+elements switch to darker backgrounds and lighter text. If another
+dark‑mode plugin toggles that class the components will adjust
+automatically.
