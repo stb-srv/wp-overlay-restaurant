@@ -148,3 +148,23 @@ body.darkmode {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Dark mode adjustments for compatibility with global plugin */
+body.darkmode {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+body.darkmode .overlay-tile,
+body.darkmode .ffo-overlay__tile {
+  background-color: #222 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+body.darkmode .overlay-tile h3,
+body.darkmode .overlay-tile p,
+body.darkmode .ffo-overlay__tile h3,
+body.darkmode .ffo-overlay__tile p {
+  color: #fff !important;
+}
