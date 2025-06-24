@@ -70,3 +70,5 @@ large screens it shrinks a bit for a more balanced appearance. The tile
 heights now grow with their content so text is no longer clipped. This
 behaviour and the breakpoints can be customised in `assets/overlay.css`
 if needed.
+Font sizes now use CSS `clamp()` to adapt to the viewport and
+iframes keep a 16:9 ratio so content remains readable on any device.

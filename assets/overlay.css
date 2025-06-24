@@ -5,10 +5,10 @@
   --radius: 8px;
   --shadow: 0 2px 10px rgba(0,0,0,0.2);
   --gap: 1rem;
-  /* Font sizes can be customised by overriding these variables */
-  --overlay-title-size: 1.5rem;
-  --tile-title-size: 1.1rem;
-  --tile-text-size: 0.9rem;
+  /* Font sizes scale with the viewport but can be overridden */
+  --overlay-title-size: clamp(1.2rem, 2vw, 1.5rem);
+  --tile-title-size: clamp(1rem, 1.5vw, 1.1rem);
+  --tile-text-size: clamp(0.85rem, 1.3vw, 0.95rem);
 }
 
 .ffo-overlay {

@@ -92,10 +92,18 @@
   margin-top: 2rem !important;
 }
 
+/* Responsive text sizing for module content */
+.ffo-fullwidth,
+.ffo-col,
+.pm-fullwidth,
+.pm-grid__item {
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+}
+
 .ffo-grid-heading {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
   text-align: center;
 }
 
@@ -104,7 +112,8 @@
 .ffo-col iframe,
 .pm-grid__item iframe {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border: 0;
   border-radius: 8px;
   display: block;
