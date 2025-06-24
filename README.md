@@ -71,6 +71,11 @@ You can also customise the colour and font for each tile title. Pass
 `tile4TitleFont` (or use the corresponding `data-*` attributes) to override the
 default styles individually.
 
+In the same way the text of each tile can be styled. Use
+`tile1TextSize`, `tile1TextColor` and `tile1TextFont` (and the equivalents
+for tiles 2–4) or the matching `data-*` attributes to set size, colour and
+font per tile.
+
 The overlay container automatically adjusts its width for different
 screen sizes. On narrow screens it becomes almost full width while on
 large screens it shrinks a bit for a more balanced appearance. The tile
