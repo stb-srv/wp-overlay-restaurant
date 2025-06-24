@@ -11,11 +11,17 @@
       tile4Title: '',
       tile4Text: '',
       ctaText: '',
-      ctaUrl: '#'
+      ctaUrl: '#',
+      overlayTitleSize: '',
+      tileTitleSize: '',
+      tileTextSize: ''
     }, params || {});
 
     var overlay = document.createElement('div');
     overlay.className = 'ffo-overlay';
+    if(opts.overlayTitleSize) overlay.style.setProperty('--overlay-title-size', opts.overlayTitleSize);
+    if(opts.tileTitleSize) overlay.style.setProperty('--tile-title-size', opts.tileTitleSize);
+    if(opts.tileTextSize) overlay.style.setProperty('--tile-text-size', opts.tileTextSize);
 
     overlay.innerHTML =
       '<div class="ffo-overlay__inner">' +
@@ -78,7 +84,10 @@
       tile4Title: d.tile4Title || '',
       tile4Text: d.tile4Text || '',
       ctaText: d.ctaText || '',
-      ctaUrl: d.ctaUrl || '#'
+      ctaUrl: d.ctaUrl || '#',
+      overlayTitleSize: d.overlayTitleSize || '',
+      tileTitleSize: d.tileTitleSize || '',
+      tileTextSize: d.tileTextSize || ''
     });
   };
 })();
