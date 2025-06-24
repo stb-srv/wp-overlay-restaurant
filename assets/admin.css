@@ -39,3 +39,22 @@ body.darkmode .ffo-remove-module {
     color: #f88;
   }
 }
+
+/* Darkmode base admin styles */
+body.darkmode {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+body.darkmode #ffo-modules .ffo-module {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+#darkmode-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
