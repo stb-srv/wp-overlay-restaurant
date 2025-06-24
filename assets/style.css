@@ -60,6 +60,12 @@
   margin-bottom: 0;
   grid-auto-rows: auto;
 }
+
+@media (max-width: 600px) {
+  .pm-grid--2x2 {
+    grid-template-columns: 1fr;
+  }
+}
 .pm-grid__item {
   background: #fff;
   padding: 1.5rem;
