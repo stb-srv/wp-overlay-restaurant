@@ -22,3 +22,14 @@ body.dark-mode #ffo-modules .ffo-module {
 body.dark-mode .ffo-remove-module {
   color: #f88;
 }
+
+@media (prefers-color-scheme: dark) {
+  #ffo-modules .ffo-module {
+    background: #2b2b2b;
+    border-color: #555;
+    color: #eee;
+  }
+  .ffo-remove-module {
+    color: #f88;
+  }
+}
