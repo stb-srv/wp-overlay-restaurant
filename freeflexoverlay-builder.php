@@ -145,6 +145,8 @@ function ffo_enqueue_assets() {
     // Overlay component assets
     wp_enqueue_style( 'ffo-overlay', FFO_URL . 'assets/overlay.css', [], FFO_VERSION );
     wp_enqueue_script( 'ffo-overlay', FFO_URL . 'assets/overlay.js', [], FFO_VERSION, true );
+    // Darkmode toggle script
+    wp_enqueue_script( 'ffo-darkmode', FFO_URL . 'assets/darkmode.js', [], FFO_VERSION, true );
     // Previously a search script was enqueued here. It has been removed.
 }
 
@@ -153,6 +155,7 @@ function ffo_admin_assets( $hook ) {
     if ( in_array( $hook, [ 'post.php', 'post-new.php' ], true ) ) {
         wp_enqueue_script( 'freeflexoverlay-admin', FFO_URL . 'assets/admin.js', [ 'jquery' ], FFO_VERSION, true );
         wp_enqueue_style( 'freeflexoverlay-admin-style', FFO_URL . 'assets/admin.css', [], FFO_VERSION );
+        wp_enqueue_script( 'ffo-darkmode', FFO_URL . 'assets/darkmode.js', [], FFO_VERSION, true );
     }
 }
 
@@ -261,4 +264,20 @@ function ffo_enqueue_overlay_css() {
     wp_register_style( 'ffo-inline-css', false );
     wp_enqueue_style( 'ffo-inline-css' );
     wp_add_inline_style( 'ffo-inline-css', $css );
+}
+
+add_action( 'wp_footer', 'ffo_darkmode_button' );
+add_action( 'admin_footer', 'ffo_darkmode_button' );
+function ffo_darkmode_button() {
+    echo '<button id="darkmode-toggle" class="ffo-darkmode-toggle">' . esc_html__( 'Darkmode', 'freeflexoverlay' ) . '</button>';
+}
+
+add_action( 'wp_ajax_ajax_toggle_dark', 'ajax_toggle_dark' );
+add_action( 'wp_ajax_nopriv_ajax_toggle_dark', 'ajax_toggle_dark' );
+function ajax_toggle_dark() {
+    $state = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
+    if ( is_user_logged_in() ) {
+        update_user_meta( get_current_user_id(), 'ffo_darkmode', $state );
+    }
+    wp_send_json_success();
 }

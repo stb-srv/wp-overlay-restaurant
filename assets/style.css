@@ -156,3 +156,25 @@ body.darkmode .pm-grid__item {
     color: #eee;
   }
 }
+
+/* Darkmode toggle base styles */
+body.darkmode {
+  background-color: #111 !important;
+  color: #fff !important;
+}
+
+body.darkmode .ffo-fullwidth,
+body.darkmode .ffo-col,
+body.darkmode .pm-fullwidth,
+body.darkmode .pm-grid__item {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+#darkmode-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
