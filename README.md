@@ -86,7 +86,8 @@ The default styles use light colours but the plugin supports both a body
 class `dark-mode` and automatic detection via the
 `prefers-color-scheme` media query. When a dark scheme is active the
 overlay and module elements switch to darker backgrounds and lighter
-text. If another dark‑mode plugin toggles the class the components will
-adjust automatically. The admin interface respects the same class and
-media query so module controls remain usable when a backend dark‑mode
-plugin is active.
+text. If another dark‑mode plugin toggles a class such as
+`wp-dark-mode-active`, `dark-mode-active` or `darkmode` the components
+will adjust automatically. The admin interface respects these classes and
+the media query so module controls remain usable when a backend
+dark‑mode plugin is active.
