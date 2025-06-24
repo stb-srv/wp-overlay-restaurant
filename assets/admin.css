@@ -14,12 +14,18 @@
 #ffo-fw2x2fw-fields { display: none; margin-top: 10px; }
 
 /* Dark mode adjustments for the admin screens */
-body.dark-mode #ffo-modules .ffo-module {
+body.dark-mode #ffo-modules .ffo-module,
+body.wp-dark-mode-active #ffo-modules .ffo-module,
+body.dark-mode-active #ffo-modules .ffo-module,
+body.darkmode #ffo-modules .ffo-module {
   background: #2b2b2b;
   border-color: #555;
   color: #eee;
 }
-body.dark-mode .ffo-remove-module {
+body.dark-mode .ffo-remove-module,
+body.wp-dark-mode-active .ffo-remove-module,
+body.dark-mode-active .ffo-remove-module,
+body.darkmode .ffo-remove-module {
   color: #f88;
 }
 

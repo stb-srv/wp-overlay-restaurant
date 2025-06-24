@@ -126,9 +126,21 @@
 }
 
 body.dark-mode .ffo-fullwidth,
+body.wp-dark-mode-active .ffo-fullwidth,
+body.dark-mode-active .ffo-fullwidth,
+body.darkmode .ffo-fullwidth,
 body.dark-mode .ffo-col,
+body.wp-dark-mode-active .ffo-col,
+body.dark-mode-active .ffo-col,
+body.darkmode .ffo-col,
 body.dark-mode .pm-fullwidth,
-body.dark-mode .pm-grid__item {
+body.wp-dark-mode-active .pm-fullwidth,
+body.dark-mode-active .pm-fullwidth,
+body.darkmode .pm-fullwidth,
+body.dark-mode .pm-grid__item,
+body.wp-dark-mode-active .pm-grid__item,
+body.dark-mode-active .pm-grid__item,
+body.darkmode .pm-grid__item {
   background: #333;
   border-color: #555;
   color: #eee;
